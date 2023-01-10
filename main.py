@@ -16,6 +16,19 @@ def home():
     return render_template('index.html')
 
 
+@app.route('/predict', methods=['POST'])
+def predict():
+    totalmatches = float(request.form['totalmatches'])
+    totalrun = float(request.form['totalrun'])
+    battingavg = float(request.form['battingavg'])
+    strikerate = float(request.form['strikerate'])
+    wickets = float(request.form['wickets'])
+    economy = float(request.form['economy'])
+    semiprobability = float(request.form['semiprobability'])
+
+
+
+
 @app.route('/predict_api', methods=['POST'])
 def results():
     data = request.get_json(force=True)
