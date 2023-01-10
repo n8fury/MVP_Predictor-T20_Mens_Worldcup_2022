@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
+    <title>MVP Prediction</title>
+  </head>
+  <body>
+    <div class="container main">
+      <div class="jumbotron" id="holder">
+        <br />
+
+        <center>
+          <h1 class="main_heading">
+            Most Valuable Player prediction using Machine Learning Techniques
+          </h1>
+        </center>
+
+        <form class="form-horizontal" action="{{ url_for('predict')}}"method="post">
+            <div class="form-group">
+        <div class="col-sm-10">
+          <input  class="form-control" type= "text" name="totalmatches" placeholder="Total Match Played" required="required" />
+        </div>
+      </div>
+     
+      <div class="form-group">
+        <div class="col-sm-10">
+          <input  class="form-control" type="text" name="totalrun" placeholder="Total Run" required="required" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <input  class="form-control" type="text" name="battingavg" placeholder="Batting Average" required="required" />
+        </div>
+      </div>
+
+      
+      <div class="form-group">
+        <div class="col-sm-10">
+          <input  class="form-control" type="text" name="strikerate" placeholder="Strike Rate" required="required" />
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="col-sm-10">
+          <input  class="form-control" type="text" name="wickets" placeholder="Wickets" required="required" />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-10">
+          <input  class="form-control" type="text" name="economy" placeholder="Economy" required="required" />
+        </div>
+      </div>      
+      <div class="form-group">
+        <div class="col-sm-10">
+          <input  class="form-control" type="text" name="semiprobability" placeholder="Chances of player playing in the semi final(max 50%)" required="required" />
+        </div>
+      </div> 
+      <div class="form-group">
+        <div class="col-sm-10">
+          <input  class="form-control" type="text" name="keyplayer" placeholder="Key Player" required="required" />
+        </div>
+      </div>        
+            
+      
+      <div class="form-group">
+        <div class="col-sm-10">
+         <center><button type="submit" class="button btn btn-default">PREDICT</button><center/>
+        </div>
+      </div>
+        </form>
+        <br>
+          <center><b><h2 style="color:#FF0000";>{{ prediction_text}}</h2></b></center> 
+          <br>
+
+              <h2 class="result"></h2>
+      </div>
+    </div>
+  </body>
+</html>
