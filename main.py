@@ -36,7 +36,29 @@ def predict():
         bowling_impact = 0.00
     else:
         bowling_impact = (96.00/(ew))/100.00
+    rbwi = round(bowling_impact, 2)
+    total_impact = rbi + rbwi
+    if keyplayer == 'Yes':
+        kp = 1
+    else:
+        kp = 0
 
+    features = [totalmatches, totalrun, battingavg, strikerate, wickets, economy,
+                rbi, rwpm, rbwi, total_impact, sm, kp]
+    input_data = np.array(features)
+    input_data_reshaped = input_data.reshape(1, -1)
+    final_features = scalerO.transform(input_data_reshaped)
+    prediction = model.predict(final_features)
+    print("features", features)
+    print("final_features", final_features)
+    print("prediction", prediction)
+    output = round(prediction[0], 2)
+    print(output)
+    if output == 0:
+        return render_template('index.html', prediction_text='Player can not be MVP')
+    else:
+        return render_template('index.html', prediction_text='Player can be  MVP')
+    
 
 
 @app.route('/predict_api', methods=['POST'])
